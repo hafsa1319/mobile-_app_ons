@@ -8734,3 +8734,19 @@ input[type=color].form-control.is-valid, input[type=color].form-control:valid {
 [data-theme=dark] body .single-plan-check {
   border-color: rgba(255, 255, 255, 0.1);
 }
+
+#categoryList {
+  margin-top: 75px;
+}
+#categoryList .row.g-3 {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  height: 125px;
+}
+#categoryList .row.g-3::-webkit-scrollbar {
+  height: 1px;
+  background-color: #00000045;
+}
+#categoryList .row.g-3::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
