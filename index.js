@@ -63,17 +63,24 @@ function catListItems(catList) {
       </div>
     </div>`;
       categoryListBox.innerHTML += slider;
-      if(tabIndex === "0") {
+      if (tabIndex === "0") {
+        let subArr= [];
         subList.map(subItem => {
-          let subArr = subItem.Text.split(">>");
-          if(subArr.length > 1) {
-            document.querySelector("#categoryList .row").innerHTML += `<div class="col-4 category-sub-item" >
+          let newSubArr = subItem.Text.split(">>");
+          if (newSubArr.length > 1) {
+            subArr.push(newSubArr[1].trim(" "))
+          }
+        });
+        subArr = subArr.filter(function (x, i, a) {
+          return a.indexOf(x) === i;
+        });
+        subArr.map(x => {
+          document.querySelector("#categoryList .row").innerHTML += `<div class="col-4 category-sub-item l" >
                                               <div class="feature-card mx-auto text-center">
-                                                    <div class="card mx-auto bg-gray" data-index="${Number(tabIndex)+1}" data-name="${subArr[Number(tabIndex)+1]}"></div>
-                                                    <p class="mb-0">${subArr[Number(tabIndex)+1]}</p>
+                                                    <div class="card mx-auto bg-gray" data-index="${Number(tabIndex) + 1}" data-name="${x}"></div>
+                                                    <p class="mb-0">${x}</p>
                                                  </div>
                                           </div>`
-          }
         })
       }
     })
@@ -104,16 +111,26 @@ function subCategories(itemDataIndex,itemCategoryName) {
       let categories = data.results[0].hits;
       let catList = categories[0].document.AvailableCategories;
       document.querySelector("#categoryList .row").innerHTML = "";
+      let subItems = [];
       catList.map(cat => {
         let subArr = cat.Text.split(">>");
-        if(subArr[Number(itemDataIndex)] === itemCategoryName) {
-          document.querySelector("#categoryList .row").innerHTML += `<div class="col-4 category-sub-item" >
-                                                <div class="feature-card mx-auto text-center">
-                                                      <div class="card mx-auto bg-gray" data-index="${Number(itemDataIndex)+1}" data-name="${subArr[Number(itemDataIndex)+1]}"></div>
-                                                      <p class="mb-0">${subArr[Number(itemDataIndex)+1]}</p>
-                                                   </div>
-                                            </div>`
+        if(subArr.length > Number(itemDataIndex)+1) {
+          if(subArr[Number(itemDataIndex)].trim(" ") === itemCategoryName) {
+            subItems.push(subArr[Number(itemDataIndex)+1].trim(" "));
+            
+          }
         }
+      })
+    subItems = subItems.filter(function (x, i, a) {
+      return a.indexOf(x) === i;
+    });
+      subItems.map(x => {
+        document.querySelector("#categoryList .row").innerHTML += `<div class="col-4 category-sub-item" >
+                                                <div class="feature-card mx-auto text-center">
+                                                      <div class="card mx-auto bg-gray" data-index="${Number(itemDataIndex)+1}" data-name="${x}"></div>
+                                                      <p class="mb-0">${x}</p>
+                                                   </div>
+                                            </div>`;
       })
     
   })
