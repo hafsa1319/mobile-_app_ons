@@ -8750,3 +8750,6 @@ input[type=color].form-control.is-valid, input[type=color].form-control:valid {
 #categoryList .row.g-3::-webkit-scrollbar-thumb {
   background-color: #000000;
 }
+.single-product-card .product-title {
+  white-space: break-spaces;
+}
