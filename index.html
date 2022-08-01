@@ -33,6 +33,53 @@
   <!-- Web App Manifest -->
   <link rel="manifest" href="assets/manifest.json">
 
+  <style>
+      #categoryList .row.g-3 {
+          padding: 10px 0;
+          height: initial;
+      }
+    .feature-card {position: relative}
+    .feature-card p {
+        font-size: 9px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        max-width: 90%;
+        background-color: #f1f2fb;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+    }
+    .product-details-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+    }
+    .card-content .btn {
+        position: relative;
+        z-index: 3;
+    }
+    .product-description table {
+        width: 100% !important;
+    }
+    #productDetail {
+        margin-top: 75px;
+    }
+    #productImages a img {
+        height: 250px;
+        width: 100%;
+        object-fit: contain;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -66,6 +113,8 @@
     </div>
   </div>
 </div>
+<!-- Product Detail  -->
+<div id="productDetail"></div>
 <!-- Offcanvas -->
 <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true"
      tabindex="-1" aria-labelledby="affanOffcanvsLabel">
